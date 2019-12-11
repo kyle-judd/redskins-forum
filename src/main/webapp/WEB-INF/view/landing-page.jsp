@@ -40,8 +40,8 @@
 	  		<p class="lead">The worst team in football</p>
 	  		<hr class="my-4">
 	  		<p>Share your pain (and the <em>occasional</em> glory!) with others who know how you feel.</p>
-	  		<a class="btn btn-warning btn-sm" href="${pageContext.request.contextPath}/login" role="button">Login <i class="fas fa-user"></i></a>
-	  		<a class="btn btn-warning btn-sm" href="${pageContext.request.contextPath}/register/registrationForm" role="button">Sign up <i class="fas fa-user-plus"></i></a>
+	  		<a class="btn btn-warning btn-lg" href="${pageContext.request.contextPath}/login" role="button">Login <i class="fas fa-user"></i></a>
+	  		<a class="btn btn-warning btn-lg" href="${pageContext.request.contextPath}/register/registrationForm" role="button">Sign up <i class="fas fa-user-plus"></i></a>
 		</div>
 		<div class="row">
 	  		<div class="col-sm-4">
