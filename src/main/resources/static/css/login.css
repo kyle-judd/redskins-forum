@@ -1,49 +1,61 @@
-body {
-	background-image: url(https://media.gettyimages.com/photos/tress-way-of-the-washington-redskins-punts-the-ball-during-the-first-picture-id1191279828?s=2048x2048);
-	background-size: cover;
-	background-position: center;
-	font-family: Roboto;
-}
-
 html {
 	height: 100%;
 }
 
+body {
+	background-image: 
+					linear-gradient(
+      				rgba(0, 0, 0, 0.5),
+      				rgba(0, 0, 0, 0.5)
+    				),
+					url('https://media.gettyimages.com/photos/dwayne-haskins-of-the-washington-redskins-looks-to-pass-against-the-picture-id1190294193?s=2048x2048');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	font-family: "Montserrat" sans-serif;
+}
+
 h1 {
-	text-align: center;
-	padding-top: 15%;
-	font-weight: 700;
-	text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
-				 0px 8px 13px rgba(0,0,0,0.1), 
-				 0px 18px 23px rgba(0,0,0,0.1);
+	color: #FFB700;
+	font-weight: 100;
+}
+
+#mainNavbar {
+	font-weight: 100;
+	font-size: 1.5rem;
+}
+
+#mainNavbar .nav-link {
 	color: white;
 }
 
-#cover {
-    background: #222 url(https://media.gettyimages.com/photos/tress-way-of-the-washington-redskins-punts-the-ball-during-the-first-picture-id1191279828?s=2048x2048) center center no-repeat;
-    background-size: cover;
-    height: 100%;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    position: relative;
+#mainNavbar .nav-link:hover {
+	color: #FFB700;
 }
 
-#cover-caption {
-    width: 100%;
-    position: relative;
-    z-index: 1;
+#mainNavbar .navbar-brand {
+	font-size: 1.5rem;
+	color: #FFB700;
 }
 
-/* only used for background overlay not needed for centering */
-form:before {
-    content: '';
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    background-color: rgba(0,0,0,0.3);
-    z-index: -1;
-    border-radius: 10px;
+#loginButton {
+	background: #FFB700;
+	color: black;
+	font-weight: 100;
+	border: none;
+	display: block;
+}
+
+.display-4 {
+	font-weight: 100;
+}
+
+#content {
+	margin-top: 150px;
+}
+
+#loginArea {
+	background: rgba(0, 0, 0, 0.5);
+	border-radius: 30px;
+	height: 300px;
 }
