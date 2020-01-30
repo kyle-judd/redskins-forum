@@ -7,10 +7,11 @@ body {
     				url(https://media.gettyimages.com/photos/dwayne-haskins-of-the-washington-redskins-looks-to-pass-against-the-picture-id1190294193?s=2048x2048);
 	background-size: cover;
 	background-position: center;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
+	font-family: "Montserrat" sans-serif;
+}
 
-	font-family: "Montserrat";
+html {
+	height: 100%;
 }
 
 #mainNavbar {
@@ -31,22 +32,21 @@ body {
 	color: #FFB700;
 }
 
-#postArea {
-	background: white;
-	font-family: "Montserrat" sans-serif;
-	font-weight: 200;
-	overflow-wrap: break-word;
-	word-wrap: break-word;
-	border-radius: 15px;
-	border: 2px solid #FFB700;
-	margin: 20px 0px;
-	padding: 10px;
+h1 {
+	font-weight: 100;
+	color: white;
 }
 
-#postChain {
-	margin-top: 100px;
+.btn, .btn-warning {
+	background: #FFB700;
+	font-weight: 100;
+	display: inline-block;
 }
 
-#username {
-	color: rgb(128, 0, 32);
+#message {
+	margin-top: 200px;
+}
+
+#content {
+	text-align: center;
 }

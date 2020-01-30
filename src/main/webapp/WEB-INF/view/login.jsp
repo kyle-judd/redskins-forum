@@ -13,7 +13,7 @@
 </head>
 <body>
 	<nav id="mainNavbar" class="navbar navbar-dark navbar-expand-md py-0">
-		<a href="" class="navbar-brand">HTTR</a>
+		<a href="${pageContext.request.contextPath}/" class="navbar-brand">HTTR</a>
 		<button class="navbar-toggler" data-toggle="collapse" data-target="#navLinks" aria-label="toggle navbar">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -32,7 +32,7 @@
 			<div class="col-md-10">
 				<div id="loginArea">
 					<h1 id="loginHeader" class="display-4 text-center mb-4">Login</h1>
-					<form:form action="${pageContext.request.contextPath}/loginProcessing" method="POST">
+					<form:form action="loginProcessing" method="POST">
 						<div class="form-group">
 							<input type="text" name="username" placeholder="Username" class="form-control w-50 m-auto">
 						</div>

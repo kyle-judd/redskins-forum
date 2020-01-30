@@ -7,6 +7,6 @@ import com.kylejudd.football.user.CustomUser;
 
 public interface UserService extends UserDetailsService{
 	
-	User findByUserName(String userName);
+	User findByUserName(String username);
 	void save(CustomUser user);
 }

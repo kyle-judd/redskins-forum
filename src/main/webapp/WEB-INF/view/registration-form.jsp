@@ -8,115 +8,104 @@
 	<title>Registration Form</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- Reference Bootstrap files -->
-	<link rel="stylesheet"
-		 href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-	
-	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-	<style>
-		.error {color:red}
-<	</style>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,400,700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+	<link rel=stylesheet type="text/css" href="${pageContext.request.contextPath}/css/registration.css"> 
 </head>
 <body>
-	<div>
-		
-		<div id="loginbox" style="margin-top: 50px;"
-			class="mainbox col-md-3 col-md-offset-2 col-sm-6 col-sm-offset-2">
-			
-			<div class="panel panel-primary">
 
-				<div class="panel-heading">
-					<div class="panel-title">Register New User</div>
-				</div>
+	<nav id="mainNavbar" class="navbar navbar-expand-md navbar-dark py-0">
+  		<a class="navbar-brand" href="${pageContext.request.contextPath}/">HTTR</a>
+  		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    		<span class="navbar-toggler-icon"></span>
+  		</button>
 
-				<div style="padding-top: 30px" class="panel-body">
-
-					<!-- Registration Form -->
-					<form:form action="${pageContext.request.contextPath}/register/processRegistrationForm" 
-						  	   modelAttribute="customUser"
-						  	   class="form-horizontal">
-
-					    <!-- Place for messages: error, alert etc ... -->
-					    <div class="form-group">
-					        <div class="col-xs-15">
-					            <div>
-								
-									<!-- Check for registration error -->
-									<c:if test="${registrationError != null}">
-								
-										<div class="alert alert-danger col-xs-offset-1 col-xs-10">
-											${registrationError}
-										</div>
-		
-									</c:if>
-																			
-					            </div>
-					        </div>
-					    </div>
-
-						<!-- User name -->
-						<div style="margin-bottom: 25px" class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> 
-							<form:errors path="username" cssClass="error" />
-							<form:input path="username" placeholder="username (*)" class="form-control" />
+  		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+    		<ul class="navbar-nav mr-auto">
+      			<li class="nav-item active">
+        			<a class="nav-link" href="#">ABOUT <span class="sr-only">(current)</span></a>
+      			</li>
+	      		<li class="nav-item">
+	        		<a class="nav-link" href="#">CONTACT</a>
+	      		</li>
+    		</ul>
+  		</div>
+	</nav>
+	
+	<div id="content" class="container">
+		<div class="row justify-content-around">
+			<div class="col-md-4">
+				<h1 class="text-center">New User</h1>
+				<form:form action="${pageContext.request.contextPath}/register/processRegistrationForm" modelAttribute="customUser" method="POST">
+					<c:if test="${registrationError != null}">
+						<div class="alert alert-danger">
+							${registrationError}
 						</div>
-
-						<!-- Password -->
-						<div style="margin-bottom: 25px" class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span> 
-							<form:errors path="password" cssClass="error" />
-							<form:password path="password" placeholder="password (*)" class="form-control" />
-						</div>
-						
-						<!-- Confirm Password -->
-						<div style="margin-bottom: 25px" class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span> 
-							<form:errors path="matchingPassword" cssClass="error" />
-							<form:password path="matchingPassword" placeholder="confirm password (*)" class="form-control" />
-						</div>
+					</c:if>
+					<!-- Username -->
+					<div class="input-group mb-3">
+					  <div class="input-group-prepend">
+					    <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
+					  </div>
+	  				  <form:input path="username" class="form-control" placeholder="Username"/>
+	  				  <form:errors path="username" class="error"/>
+					</div>
 					
-						
-						<!-- First name -->
-						<div style="margin-bottom: 25px" class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> 
-							<form:errors path="firstName" cssClass="error" />
-							<form:input path="firstName" placeholder="first name (*)" class="form-control" />
-						</div>
-						
-						<!-- Last name -->
-						<div style="margin-bottom: 25px" class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> 
-							<form:errors path="lastName" cssClass="error" />
-							<form:input path="lastName" placeholder="last name (*)" class="form-control" />
-						</div>
-						
-						<!-- Email -->
-						<div style="margin-bottom: 25px" class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> 
-							<form:errors path="email" cssClass="error" />
-							<form:input path="email" placeholder="email (*)" class="form-control" />
-						</div>
-						
-						
-
-						<!-- Register Button -->
-						<div style="margin-top: 10px" class="form-group">						
-							<div class="col-sm-6 controls">
-								<button type="submit" class="btn btn-primary">Register</button>
-							</div>
-						</div>
-						
-					</form:form>
-
-				</div>
-
+					<!-- Password -->
+					<div class="input-group mb-3">
+					  <div class="input-group-prepend">
+					    <span class="input-group-text"><i class="fas fa-key"></i></span>
+					  </div>
+					  <form:errors path="password" class="error"/>
+					  <form:password path="password" class="form-control" placeholder="Password"/>
+					</div>
+					
+					<!-- Confirm Password -->
+					<div class="input-group mb-3">
+					  <div class="input-group-prepend">
+					    <span class="input-group-text"><i class="fas fa-key"></i></span>
+					  </div>
+					  <form:errors path="matchingPassword" class="error"/>
+					  <form:password path="matchingPassword" class="form-control" placeholder="Confirm Password"/>
+					</div>
+					
+					<!-- First Name -->
+					<div class="input-group mb-3">
+					  <div class="input-group-prepend">
+					    <span class="input-group-text"><i class="fas fa-pencil-alt"></i></span>
+					  </div>
+					  <form:errors path="firstName" class="error"/>
+	  				  <form:input path="firstName" class="form-control" placeholder="First Name"/>
+					</div>
+					
+					<!-- Last Name -->
+					<div class="input-group mb-3">
+					  <div class="input-group-prepend">
+					    <span class="input-group-text"><i class="fas fa-pencil-alt"></i></span>
+					  </div>
+					  <form:errors path="lastName" class="error"/>
+	  				  <form:input path="lastName" class="form-control" placeholder="Last Name"/>
+					</div>
+					
+					<!-- Email -->
+					<div class="input-group mb-3">
+					  <div class="input-group-prepend">
+					    <span class="input-group-text"><i class="fas fa-at"></i></span>
+					  </div>
+					  <form:errors path="email" class="error"/>
+	  				  <form:input path="email" class="form-control" placeholder="Email"/>
+					</div>
+					
+					<!-- Submit Button -->
+					<button type="submit" class="btn btn-primary w-100 mx-auto" id="submitButton">Create Account<i class="fas fa-user-plus ml-2"></i></button>
+				</form:form>
 			</div>
-
 		</div>
+    </div>
 
-	</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>

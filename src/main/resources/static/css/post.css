@@ -38,7 +38,7 @@ h1 {
 	color: #FFB700;
 }
 
-#loginButton {
+#submitPost {
 	background: #FFB700;
 	color: black;
 	font-weight: 100;
@@ -46,10 +46,16 @@ h1 {
 	display: block;
 }
 
+#textArea {
+	display: block;
+	border: 2px solid #FFB700;
+	border-radius: 25px;
+}
+
 .display-4 {
 	font-weight: 100;
 }
 
 #content {
-	margin-top: 200px;
+	margin-top: 150px;
 }

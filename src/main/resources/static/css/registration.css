@@ -1,23 +1,17 @@
-html {
-	height: 100%;
-}
-
 body {
-	background-image: 
-					linear-gradient(
+	background-image:
+    				linear-gradient(
       				rgba(0, 0, 0, 0.5),
       				rgba(0, 0, 0, 0.5)
     				),
-					url('https://media.gettyimages.com/photos/dwayne-haskins-of-the-washington-redskins-looks-to-pass-against-the-picture-id1190294193?s=2048x2048');
-	background-position: center;
-	background-repeat: no-repeat;
+    				url(https://media.gettyimages.com/photos/dwayne-haskins-of-the-washington-redskins-looks-to-pass-against-the-picture-id1190294193?s=2048x2048);
 	background-size: cover;
+	background-position: center;
 	font-family: "Montserrat";
 }
 
-h1 {
-	color: #FFB700;
-	font-weight: 100;
+html {
+	height: 100%;
 }
 
 #mainNavbar {
@@ -38,7 +32,12 @@ h1 {
 	color: #FFB700;
 }
 
-#loginButton {
+h1 {
+	font-weight: 100;
+	color: #FFB700;
+}
+
+#submitButton {
 	background: #FFB700;
 	color: black;
 	font-weight: 100;
@@ -46,10 +45,12 @@ h1 {
 	display: block;
 }
 
-.display-4 {
-	font-weight: 100;
+#content {
+	margin-top: 100px;
 }
 
-#content {
-	margin-top: 200px;
+.error {
+	color: red;
+	font-weight: 100;
+	font-size: .25rem;
 }

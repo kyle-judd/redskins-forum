@@ -45,8 +45,7 @@ public class RegistrationController {
 	}
 	
 	@PostMapping("/processRegistrationForm")
-	public String processRegistrationForm(
-			@Valid @ModelAttribute("customUser") CustomUser user, 
+	public String processRegistrationForm(@Valid @ModelAttribute("customUser") CustomUser user, 
 			BindingResult bindingResult,
 			Model model) {
 		
@@ -63,7 +62,8 @@ public class RegistrationController {
 		if(existing != null) {
 			model.addAttribute("customUser", new CustomUser());
 			model.addAttribute("registrationError", "Username already exists");
-			logger.warn("Username already exists");
+			logger.warn("Username: " + username + " already exists!");
+			return "registration-form";
 		}
 		
 		userService.save(user);

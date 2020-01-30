@@ -4,7 +4,7 @@ import com.kylejudd.football.entity.User;
 
 public interface UserDao {
 	
-	User findByUserName(String userName);
+	User findByUserName(String username);
 	
 	void save(User user);
 }
