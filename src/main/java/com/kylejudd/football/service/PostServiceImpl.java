@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.kylejudd.football.dao.PostDao;
 import com.kylejudd.football.entity.Post;
+import com.kylejudd.football.entity.User;
 
 @Service
 public class PostServiceImpl implements PostService {
@@ -43,6 +44,12 @@ public class PostServiceImpl implements PostService {
 	@Transactional
 	public List<Post> findAllPostsOrderedByTime() {
 		return postDao.findAllPostsOrderedByNewest();
+	}
+
+	@Override
+	@Transactional
+	public List<Post> findAllPostsByUser(User currentUser) {
+		return postDao.findAllPostsByUser(currentUser);
 	}
 
 }

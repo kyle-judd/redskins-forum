@@ -25,7 +25,7 @@
 	        	<a class="nav-link" href="${pageContext.request.contextPath}/home">HOME <span class="sr-only">(current)</span></a>
 	      	</li>
 	      	<li class="nav-item">
-	        	<a class="nav-link" href="#">PROFILE</a>
+	        	<a class="nav-link" href="${pageContext.request.contextPath}/myProfile">PROFILE</a>
 	      	</li>
 	      	<li class="nav-item">
 	      		<a class="nav-link" href="${pageContext.request.contextPath}/logout">LOGOUT</a>
@@ -45,7 +45,8 @@
 							<form:textarea id="textArea" class="m-auto" cols="50" rows="10" path="content"/>
 						</div>
 						<div class="form-group">
-							<input type="file" name="file" id="fileUpload" class="btn btn-primary">
+							<label for = "image" class="w-50 mx-auto text-center"><i class="far fa-image mr-2"></i>Upload picture</label>
+							<input type="file" id="image" name="imageFile">
 						</div>
 						<button type="submit" id="submitPost" class="btn btn-primary w-50 mx-auto">Submit<i class="fas fa-angle-double-right ml-2"></i></button>
 					</form:form>

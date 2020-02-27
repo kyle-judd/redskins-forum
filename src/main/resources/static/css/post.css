@@ -41,7 +41,15 @@ h1 {
 #submitPost {
 	background: #FFB700;
 	color: black;
-	font-weight: 100;
+	font-weight: 400;
+	border: none;
+	display: block;
+}
+
+#submitPost:hover {
+	background: rgb(128, 0, 32);
+	color: #FFB700;
+	font-weight: 400;
 	border: none;
 	display: block;
 }
@@ -49,7 +57,9 @@ h1 {
 #textArea {
 	display: block;
 	border: 2px solid #FFB700;
-	border-radius: 25px;
+	outline: 2px solid rgb(128, 0, 32);
+	background-color: rgba(0, 0, 0, 0.8);
+	color: white;
 }
 
 .display-4 {
@@ -58,4 +68,28 @@ h1 {
 
 #content {
 	margin-top: 150px;
+}
+
+input[type="file"]{
+	display: none;
+}
+
+label {
+	color: black;
+	background-color: #FFB700;
+	display: block;
+	border-radius: .25rem;
+	font-weight: 400;
+	font-family: "Montserrat", sans-serif;
+	cursor: pointer;
+}
+
+label:hover {
+	color: #FFB700;
+	background-color: rgb(128, 0, 32);
+	display: block;
+	border-radius: .25rem;
+	font-weight: 400;
+	font-family: "Montserrat", sans-serif;
+	cursor: pointer;
 }

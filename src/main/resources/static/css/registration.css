@@ -40,7 +40,7 @@ h1 {
 #submitButton {
 	background: #FFB700;
 	color: black;
-	font-weight: 100;
+	font-weight: 400;
 	border: none;
 	display: block;
 }
@@ -53,4 +53,18 @@ h1 {
 	color: red;
 	font-weight: 100;
 	font-size: .25rem;
+}
+
+input[type="file"]{
+	display: none;
+}
+
+label {
+	color: black;
+	background-color: #FFB700;
+	display: block;
+	border-radius: .25rem;
+	font-weight: 400;
+	font-family: "Montserrat", sans-serif;
+	cursor: pointer;
 }

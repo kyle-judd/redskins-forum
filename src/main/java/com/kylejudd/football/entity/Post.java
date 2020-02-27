@@ -1,7 +1,5 @@
 package com.kylejudd.football.entity;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -10,14 +8,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table(name = "posts")
@@ -40,24 +37,22 @@ public class Post {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
 	
-	@Column(name = "file")
-	private File file;
+	@OneToOne
+	@JoinColumn(name = "file")
+	private PostImage postImage;
 	
 	public Post() {
 		
 	}
 	
-	public Post(String content, User user, Date date, File file) throws FileNotFoundException {
+
+	public Post(String content, User user, Date date, PostImage postImage) {
 		this.content = content;
 		this.user = user;
 		this.date = date;
-		
-		try {
-			this.file = file;
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+		this.postImage = postImage;
 	}
+
 
 	public int getId() {
 		return id;
@@ -82,14 +77,16 @@ public class Post {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-
-	public File getFile() {
-		return file;
+	
+	public PostImage getPostImage() {
+		return postImage;
 	}
 
-	public void setFile(File file) {
-		this.file = file;
+
+	public void setPostImage(PostImage postImage) {
+		this.postImage = postImage;
 	}
+
 
 	public User getUser() {
 		return user;
@@ -101,7 +98,7 @@ public class Post {
 
 	@Override
 	public String toString() {
-		return "Post [id=" + id + ", content=" + content + ", date=" + date + ", file=" + file + "]";
+		return "Post [id=" + id + ", content=" + content + ", date=" + date + ", file=" + postImage + "]";
 	}
 	
 }

@@ -37,7 +37,7 @@
 		<div class="row justify-content-around">
 			<div class="col-md-4">
 				<h1 class="text-center">New User</h1>
-				<form:form action="${pageContext.request.contextPath}/register/processRegistrationForm" modelAttribute="customUser" method="POST">
+				<form:form action="${pageContext.request.contextPath}/register/processRegistrationForm" modelAttribute="customUser" enctype="multipart/form-data" method="POST">
 					<c:if test="${registrationError != null}">
 						<div class="alert alert-danger">
 							${registrationError}
@@ -95,6 +95,11 @@
 					  </div>
 					  <form:errors path="email" class="error"/>
 	  				  <form:input path="email" class="form-control" placeholder="Email"/>
+					</div>
+					
+					<div class="input-group mb-3">
+						<label for="profilePicture" class="w-100 p-2 mx-auto text-center"><i class="far fa-image mr-2"></i>Upload Profile Picture (Optional)</label>
+						<input type="file" id="profilePicture" name="image">
 					</div>
 					
 					<!-- Submit Button -->

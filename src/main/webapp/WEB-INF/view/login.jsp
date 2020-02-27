@@ -32,6 +32,11 @@
 			<div class="col-md-10">
 				<div id="loginArea">
 					<h1 id="loginHeader" class="display-4 text-center mb-4">Login</h1>
+					<c:if test = "${param.error != null}">           
+						<div id="loginError" class="alert alert-danger w-50 mx-auto">
+							Invalid username or password.
+						</div>
+					</c:if>											
 					<form:form action="loginProcessing" method="POST">
 						<div class="form-group">
 							<input type="text" name="username" placeholder="Username" class="form-control w-50 m-auto">

@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -48,6 +49,10 @@ public class User {
 	
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	private List<Post> posts;
+	
+	@OneToOne
+	@JoinColumn(name = "picture")
+	private ProfilePicture profilePicture;
 	
 	public User() {
 		
@@ -136,10 +141,19 @@ public class User {
 		this.posts = posts;
 	}
 
+	public ProfilePicture getProfilePicture() {
+		return profilePicture;
+	}
+
+	public void setProfilePicture(ProfilePicture profilePicture) {
+		this.profilePicture = profilePicture;
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", firstName=" + firstName
-				+ ", lastName=" + lastName + ", email=" + email + ", roles=" + roles + "]";
+				+ ", lastName=" + lastName + ", email=" + email + ", roles=" + roles + ", posts=" + posts
+				+ ", profilePicture=" + profilePicture + "]";
 	}
 
 }

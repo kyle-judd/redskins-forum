@@ -63,9 +63,17 @@ public class PostDaoImpl implements PostDao {
 	}
 
 	@Override
-	public List<Post> findAllPostsByUserId(int userId) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Post> findAllPostsByUser(User currentUser) {
+		
+		Session session = entityManager.unwrap(Session.class);
+		
+		Query<Post> query = session.createQuery("from Post where user=:currentUser order by date desc", Post.class);
+		
+		query.setParameter("currentUser", currentUser);
+		
+		List<Post> postsByUser = query.getResultList();
+		
+		return postsByUser;
 	}
 
 	@Override

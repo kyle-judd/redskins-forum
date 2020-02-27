@@ -3,6 +3,7 @@ package com.kylejudd.football.user;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.kylejudd.football.entity.ProfilePicture;
 import com.kylejudd.football.validation.FieldMatch;
 import com.kylejudd.football.validation.ValidEmail;
 
@@ -35,6 +36,8 @@ public class CustomUser {
 	@NotNull(message = "is required")
 	@Size(min = 1, message = "is required")
 	private String email;
+	
+	private ProfilePicture profilePicture;
 	
 	public CustomUser() {
 		
@@ -87,11 +90,20 @@ public class CustomUser {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	public ProfilePicture getProfilePicture() {
+		return profilePicture;
+	}
+
+	public void setProfilePicture(ProfilePicture profilePicture) {
+		this.profilePicture = profilePicture;
+	}
 
 	@Override
 	public String toString() {
 		return "CustomUser [firstName=" + firstName + ", lastName=" + lastName + ", password=" + password
-				+ ", matchingPassword=" + matchingPassword + ", username=" + username + ", email=" + email + "]";
+				+ ", matchingPassword=" + matchingPassword + ", username=" + username + ", email=" + email
+				+ ", profilePicture=" + profilePicture + "]";
 	}
 
 }

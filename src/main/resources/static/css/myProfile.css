@@ -38,14 +38,14 @@ html, body {
 #profileArea {
 	width: 100%;
 	height: 100%;
-	background-color: rgb(255, 255, 255);
+	background-color: rgba(0, 0, 0, 0.9);
 	border-radius: 25px;
 }
 
 #header {
 	color: #FFB700;
 	font-weight: 200;
-	margin-top: 10px;
+	margin-top: 10px;	
 }
 
 hr { 
@@ -58,22 +58,90 @@ hr {
     padding: 0; 
 }
 
-#imageContainer {
-    width: 100px;
-    height: 100px;
-    position: relative;
-    overflow: hidden;
-    border-radius: 50%;
-}
-#profile-pic {
-  display: inline;
-  margin: 0 auto;
-  margin-left: -25%;
-  height: 100%;
-  width: auto;
+.user-info {
+	font-size: 25px;
+	font-weight: 200;	
+	color: rgb(128, 0, 32);
 }
 
-table, tr, td, th {
-	border: 1px solid black;
-	color: black;
+.user-info-heading {
+	font-size: 25px;
+	font-weight: 200;
+	color: #FFB700;
+}
+
+.profilePicture {
+	display: inline-block;
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+
+#postArea {
+	background-color: rgba(0, 0, 0, 0.5);
+	color: white;
+	font-family: "Montserrat" sans-serif;
+	font-weight: 200;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	border-radius: 15px;
+	border: 2px solid #FFB700;
+	margin: 20px 0px;
+	padding: 10px;
+}
+
+#postChain {
+	overflow-y: scroll;
+	overflow-x: hidden;
+	height: 500px;
+}
+
+#username {
+	color: rgb(128, 0, 32);
+}
+
+.image {
+	width: 100%;
+	height: 100%;
+}
+
+#imageArea {
+	height: 70%;
+}
+
+.divider {
+	border-right: 2px solid rgb(128, 0, 32);
+}
+
+.group-info {
+	margin-top: 80px;
+}
+
+	/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #FFB700; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(128, 0, 32); 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: white; 
+}
+
+.post-header {
+	color: white;
 }

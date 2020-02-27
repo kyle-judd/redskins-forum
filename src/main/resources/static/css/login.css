@@ -46,6 +46,12 @@ h1 {
 	display: block;
 }
 
+#loginError {
+	display: block;
+	font-weight: 200;
+	border: none;
+}
+
 .display-4 {
 	font-weight: 100;
 }

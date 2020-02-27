@@ -55,17 +55,15 @@ public class UserServiceImpl implements UserService {
 	@Transactional
 	public void save(CustomUser customUser) {
 		User user = new User();
-		 // assign user details to the user object
+
 		user.setUsername(customUser.getUsername());
 		user.setPassword(passwordEncoder.encode(customUser.getPassword()));
 		user.setFirstName(customUser.getFirstName());
 		user.setLastName(customUser.getLastName());
 		user.setEmail(customUser.getEmail());
-
-		// give user default role of "employee"
+		user.setProfilePicture(customUser.getProfilePicture());
 		user.setRoles(Arrays.asList(roleDao.findRoleByName("ROLE_USER")));
 
-		 // save user in the database
 		userDao.save(user);
 	}
 	

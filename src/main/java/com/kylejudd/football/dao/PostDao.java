@@ -3,12 +3,13 @@ package com.kylejudd.football.dao;
 import java.util.List;
 
 import com.kylejudd.football.entity.Post;
+import com.kylejudd.football.entity.User;
 
 public interface PostDao {
 	
 	Post findPostById(int id);
 	
-	List<Post> findAllPostsByUserId(int userId);
+	List<Post> findAllPostsByUser(User currentUser);
 	
 	List<Post> findAllPostsOrderedByNewest();
 		

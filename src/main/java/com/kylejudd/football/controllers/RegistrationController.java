@@ -14,8 +14,12 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.kylejudd.football.entity.ProfilePicture;
 import com.kylejudd.football.entity.User;
+import com.kylejudd.football.service.ImageService;
 import com.kylejudd.football.service.UserService;
 import com.kylejudd.football.user.CustomUser;
 
@@ -27,6 +31,9 @@ public class RegistrationController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private ImageService imageService;
 	
 	@InitBinder
 	public void initBinder(WebDataBinder dataBinder) {
@@ -45,9 +52,10 @@ public class RegistrationController {
 	}
 	
 	@PostMapping("/processRegistrationForm")
-	public String processRegistrationForm(@Valid @ModelAttribute("customUser") CustomUser user, 
-			BindingResult bindingResult,
-			Model model) {
+	public String processRegistrationForm(@RequestParam("image") MultipartFile image,
+										  @Valid @ModelAttribute("customUser") CustomUser user, 
+										  BindingResult bindingResult,
+										  Model model) {
 		
 		String username = user.getUsername();
 		
@@ -65,6 +73,17 @@ public class RegistrationController {
 			logger.warn("Username: " + username + " already exists!");
 			return "registration-form";
 		}
+		
+		try {
+			imageService.saveProfilePicture(image);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		ProfilePicture profilePicture = imageService.getProfilePictureByFileName(image.getOriginalFilename());
+		
+		user.setProfilePicture(profilePicture);
 		
 		userService.save(user);
 		
