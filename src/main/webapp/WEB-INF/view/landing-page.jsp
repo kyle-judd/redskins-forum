@@ -22,7 +22,7 @@
 	        		<a class="nav-link" href="${pageContext.request.contextPath}/about">ABOUT<span class="sr-only">(current)</span></a>
 	      		</li>
 	      		<li class="nav-item">
-	        		<a class="nav-link" href="${pageContext.request.contextPath}/contact">CONTACT</a>
+	        		<a class="nav-link" href="${pageContext.request.contextPath}/contact/contactForm">CONTACT</a>
 	      		</li>
 	    	</ul>
 	  	</div>
