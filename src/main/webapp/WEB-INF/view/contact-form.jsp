@@ -12,5 +12,16 @@
 </head>
 <body>
 	<h1>Contact Form</h1>
+	<form:form action="/sendEmail" modelAttribute="contact" method="POST">
+		<label for="name">Name:</label>
+		<form:input id="name" path="name"/>
+		<label for="email">Email:</label>
+		<form:input id="email" path="email"/>
+		<label for="subject">Subject:</label>
+		<form:input id="subject" path="subject"/>
+		<label for="content">Content:</label>
+		<form:textarea id="content" path="content" rows="5" cols="20"/>
+		<input type="submit" value="Send">
+	</form:form>
 </body>
 </html>
