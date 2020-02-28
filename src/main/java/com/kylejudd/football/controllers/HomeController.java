@@ -16,7 +16,7 @@ import com.kylejudd.football.service.PostService;
 import com.kylejudd.football.service.UserService;
 
 @Controller 
-public class DemoController {
+public class HomeController {
 	
 	@Autowired
 	private PostService postService;
@@ -47,6 +47,16 @@ public class DemoController {
 		theModel.addAttribute("currentUser", currentUser);
 		
 		return "home";
+	}
+	
+	@GetMapping("/about")
+	public String aboutPage() {
+		return "about";
+	}
+	
+	@GetMapping("/contact")
+	public String contact() {
+		return "contact";
 	}
 	
 	@GetMapping("/admin")

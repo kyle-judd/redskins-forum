@@ -19,10 +19,10 @@
 	 	 <div class="collapse navbar-collapse" id="navbarSupportedContent">
 	    	<ul class="navbar-nav mr-auto">
 	      		<li class="nav-item">
-	        		<a class="nav-link" href="#">ABOUT<span class="sr-only">(current)</span></a>
+	        		<a class="nav-link" href="${pageContext.request.contextPath}/about">ABOUT<span class="sr-only">(current)</span></a>
 	      		</li>
 	      		<li class="nav-item">
-	        		<a class="nav-link" href="#">CONTACT</a>
+	        		<a class="nav-link" href="${pageContext.request.contextPath}/contact">CONTACT</a>
 	      		</li>
 	    	</ul>
 	  	</div>
