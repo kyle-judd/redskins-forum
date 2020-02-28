@@ -1,0 +1,57 @@
+
+body {
+	height: 100%;
+	background-image:
+    				linear-gradient(
+      				rgba(0, 0, 0, 0.5),
+      				rgba(0, 0, 0, 0.5)
+    				),
+    				url(https://media.gettyimages.com/photos/dwayne-haskins-of-the-washington-redskins-looks-to-pass-against-the-picture-id1190294193?s=2048x2048);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+
+	font-family: "Montserrat";
+}
+
+#mainNavbar {
+	font-weight: 100;
+	font-size: 1.5rem;
+}
+
+#mainNavbar .nav-link {
+	color: white;
+}
+
+#mainNavbar .nav-link:hover {
+	color: #FFB700;
+}
+
+#mainNavbar .navbar-brand {
+	font-size: 1.5rem;
+	color: #FFB700;
+}
+
+.jumbotron {
+	background-color:transparent !important;
+	color: white;
+	margin-top: 13%;
+	margin-right: 13%;
+	margin-left: 13%;
+}
+
+.display-4 {
+	font-size: 100;
+}
+
+hr {
+	border: 1px solid white;
+	width: 50%;
+}
+
+#about {
+	width: 50%;
+	margin-left: 25%;
+	margin-right: 25%;
+}
