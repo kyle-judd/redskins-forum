@@ -12,7 +12,8 @@
 </head>
 <body>
 	<h1>Contact Form</h1>
-	<form:form action="/sendEmail" modelAttribute="contact" method="POST">
+	${message}
+	<form:form action="${pageContext.request.contextPath}/contact/sendEmail" modelAttribute="contact" method="POST">
 		<label for="name">Name:</label>
 		<form:input id="name" path="name"/>
 		<label for="email">Email:</label>

@@ -54,11 +54,6 @@ public class HomeController {
 		return "about";
 	}
 	
-	@GetMapping("/contact")
-	public String contact() {
-		return "contact";
-	}
-	
 	@GetMapping("/admin")
 	public String adminPage() {
 		return "admin";
