@@ -1,6 +1,7 @@
 <%@ taglib uri = "http://www.springframework.org/tags/form" prefix = "form" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>  
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
@@ -13,42 +14,6 @@
   	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/home.css">
 	<title>Home</title>
-	<!-- Janky solution to profile picture -->
-	<style type="text/css">
-		.avatar {
-			border-radius: 50%;
-			height: 100px;
-			width: 100px;
-			background-image: url("<c:url value="profile/picture/${currentUser.profilePicture.filename}"/>");
-		}
-		
-		.default-avatar {
-			border-radius: 50%;
-			height: 100px;
-			width: 100px;
-			background-image: url("<c:url value="profile/picture/71ed4d29fbad769786476d37b35c5441.jpg"/>");
-		}
-		
-		.cover {
-			background-size: cover;
-			background-position: center;	
-		}
-		
-	</style>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script type="text/javascript">
-		jQuery(function($) {
-			$('.image').click(function() {
-				var img = $(this).attr("src");
-				var appear_image = "<div id='appear_image_div' onClick='closeImage()'></div>";
-				$('body').append(appear_image);
-			});
-		});
-		function closeImage() {
-				$('#appear_image_div').remove();
-			}
-		
-	</script>	
 </head>
 <body>
 	<nav id="mainNavbar" class="navbar navbar-expand-md navbar-dark fixed-top py-0">
@@ -78,52 +43,48 @@
 </nav>
 
 <div class="container">
-	<div id="postChain">
-		<c:forEach var = "post" items = "${allPosts}">
-			<div class="row justify-content-center">	
-				<div id="postArea" class="col-sm-4">
-					<div class="row">
-						<div class="col-md-6">
-							<c:choose>
-								<c:when test="${post.user.profilePicture != null}">
-									<div class="avatar cover">
-									
-									</div>
-								</c:when>
-								<c:when test="${post.user.profilePicture == null}">
-									<div class="default-avatar cover">
-									
-									</div>
-								</c:when>
-							</c:choose>
-						</div>
-						<div class="col-md-6">
-							<div class="post-info">
-								<p class="">User: <span id="username">${post.user.username}</span></p>
-								<p>Time: ${post.date}</p>
-							</div>
-						</div>
-					</div>
-						
-						
-						<div>
-							${post.content}
-						</div>
-						<c:if test = "${post.postImage != null}">
-							<div id="imageArea">
-								<img class="image" src="<c:url value="posts/images/${post.postImage.fileName}"/>">
-							</div>
-						</c:if>
-						<c:url var="deletePost" value="/deletePost">
-							<c:param name="postId" value="${post.id}"/>
-						</c:url>
-						<c:if test="${post.user.id == currentUser.id}">
-							<a href="${deletePost}" onclick = "if(!(confirm('Are you sure you want to delete this post?'))) return false"><i class="fas fa-trash-alt"></i></a>
-						</c:if>
-				</div>
-			</div>
-		</c:forEach>
-	</div>
+	<c:forEach var = "post" items = "${allPosts}">
+		<div class="card gedf-card mt-5">
+		    <div class="card-header">
+		        <div class="d-flex justify-content-between align-items-center">
+		            <div class="d-flex justify-content-between align-items-center">
+		            	<c:choose>
+							<c:when test="${post.user.profilePicture != null}">
+								<div class="mr-2">
+									<img class="rounded-circle" width="45" src="<c:url value="profile/picture/${post.user.profilePicture.filename}"/>" alt="Profile Picture">
+								</div>
+							</c:when>
+							<c:when test="${post.user.profilePicture == null}">
+								<div class="mr-2">
+									<img class="rounded-circle" width="45" src="<c:url value="profile/picture/71ed4d29fbad769786476d37b35c5441.jpg"/>">
+								</div>
+							</c:when>
+						</c:choose>
+		                <div class="ml-2">
+		                    <div class="h5 m-0">@${post.user.username}</div>
+		                    <div class="h7 text-muted">${post.user.firstName} ${post.user.lastName}</div>
+		                </div>
+		            </div>
+		        </div>
+		
+		    </div>
+		    <div class="card-body">
+		    	<c:set var="Date" value="${post.date}" />
+		        <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i><fmt:formatDate type="both" value="${Date}"/></div>
+		        <a class="card-link" href="#">
+		            <h5 class="card-title"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit consectetur
+		                deserunt illo esse distinctio.</h5>
+		        </a>
+		
+		        <p class="card-text">
+		           ${post.content}
+		        </p>
+		        <c:if test = "${post.postImage != null}">
+					<img class="img-fluid" src="<c:url value="posts/images/${post.postImage.fileName}"/>">
+				</c:if>
+		    </div>
+		</div>
+	</c:forEach>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

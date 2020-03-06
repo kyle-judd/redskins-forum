@@ -24,10 +24,10 @@
   		<div class="collapse navbar-collapse" id="navbarSupportedContent">
     		<ul class="navbar-nav mr-auto">
       			<li class="nav-item active">
-        			<a class="nav-link" href="#">ABOUT <span class="sr-only">(current)</span></a>
+        			<a class="nav-link" href="${pageContext.request.contextPath}/about">ABOUT <span class="sr-only">(current)</span></a>
       			</li>
 	      		<li class="nav-item">
-	        		<a class="nav-link" href="#">CONTACT</a>
+	        		<a class="nav-link" href="${pageContext.request.contextPath}/contact/contactForm">CONTACT</a>
 	      		</li>
     		</ul>
   		</div>
@@ -35,7 +35,7 @@
 	
 	<div id="content" class="container">
 		<div class="row justify-content-around">
-			<div class="col-md-4">
+			<div class="col-xs-4">
 				<h1 class="text-center">New User</h1>
 				<form:form action="${pageContext.request.contextPath}/register/processRegistrationForm" modelAttribute="customUser" enctype="multipart/form-data" method="POST">
 					<c:if test="${registrationError != null}">

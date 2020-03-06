@@ -1,4 +1,6 @@
-
+html {
+	height: 100%;
+}
 body {
 	height: 100%;
 	background-image:
@@ -31,4 +33,22 @@ body {
 #mainNavbar .navbar-brand {
 	font-size: 1.5rem;
 	color: #FFB700;
+}
+
+.heading {
+	color: #FFB700;
+	font-weight: 100;
+}
+
+#submitButton {
+	background: #FFB700;
+	color: black;
+	font-weight: 400;
+	border: none;
+	display: block;
+}
+
+#submitButton:hover {
+	background: rgb(128, 0, 32);
+	color: white;
 }

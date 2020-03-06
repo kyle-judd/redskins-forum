@@ -29,20 +29,21 @@
 		        	<a class="nav-link" href="${pageContext.request.contextPath}/about">ABOUT</a>
 		      	</li>
 		      	<li class="nav-item">
-		      		<a class="nav-link" href="${pageContext.request.contextPath}/contact">CONTACT</a>
+		      		<a class="nav-link" href="${pageContext.request.contextPath}/contact/contactForm">CONTACT</a>
 		      	</li>
 	    	</ul>
 	  	</div>
 	</nav>
-	
-	<div class="jumbotron">
-		<div>
-		  <h1 class="display-4 text-center">About</h1>
-		  <hr>
-		  <div id="about">
-		  	<p class="lead text-center">Skins Talk is a website where fans of the Washington Redskins can go to discuss anything about the organization! I've always had a love for the team and I wanted to create something that expresses that love while further advancing my developer skills. </p>
-		  </div>			 
-		 </div>
+	<div class="container h-100 d-flex">
+		<div class="jumbotron my-auto">
+			<div>
+			  <h1 class="display-4 text-center">About</h1>
+			  <hr>
+			  <div id="about">
+			  	<p class="lead text-center">Skins Talk is a website where fans of the Washington Redskins can go to discuss anything about the organization! I've always had a love for the team and I wanted to create something that expresses that love while further advancing my developer skills. </p>
+			  </div>			 
+			 </div>
+		</div>
 	</div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

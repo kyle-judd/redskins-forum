@@ -1,4 +1,6 @@
-
+html{
+	height: 100%;
+}
 body {
 	height: 100%;
 	background-image:
@@ -36,9 +38,6 @@ body {
 .jumbotron {
 	background-color:transparent !important;
 	color: white;
-	margin-top: 13%;
-	margin-right: 13%;
-	margin-left: 13%;
 }
 
 .display-4 {

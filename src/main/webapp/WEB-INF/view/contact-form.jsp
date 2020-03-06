@@ -8,21 +8,77 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/contact.css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,400,700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
 	<title>Contact Form</title>
 </head>
 <body>
-	<h1>Contact Form</h1>
-	${message}
-	<form:form action="${pageContext.request.contextPath}/contact/sendEmail" modelAttribute="contact" method="POST">
-		<label for="name">Name:</label>
-		<form:input id="name" path="name"/>
-		<label for="email">Email:</label>
-		<form:input id="email" path="email"/>
-		<label for="subject">Subject:</label>
-		<form:input id="subject" path="subject"/>
-		<label for="content">Content:</label>
-		<form:textarea id="content" path="content" rows="5" cols="20"/>
-		<input type="submit" value="Send">
-	</form:form>
+<nav id="mainNavbar" class="navbar navbar-expand-md navbar-dark py-0">
+  	<a class="navbar-brand" href="${pageContext.request.contextPath}/">HTTR</a>
+  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    	<span class="navbar-toggler-icon"></span>
+ 	</button>
+
+ 	 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    	<ul class="navbar-nav mr-auto">
+      		<li class="nav-item">
+        		<a class="nav-link" href="${pageContext.request.contextPath}/about">ABOUT<span class="sr-only">(current)</span></a>
+      		</li>
+      		<li class="nav-item">
+        		<a class="nav-link" href="${pageContext.request.contextPath}/contact/contactForm">CONTACT</a>
+      		</li>
+    	</ul>
+  	</div>
+</nav>
+<div class="container h-75 d-flex justify-content-center align-items-center">
+	<div class="row">
+		<div class="col-xs-4">
+		<h1 class="display-4 text-center heading">Contact Form</h1>		
+		<c:if test="${message != null}">
+			<div class="alert alert-success" role="alert">
+			  ${message}
+			</div>
+		</c:if>
+			<form:form action="${pageContext.request.contextPath}/contact/sendEmail" modelAttribute="contact" method="POST">
+				<!-- Name -->
+				<div class="input-group mb-3">
+				  <div class="input-group-prepend">
+				    <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
+				  </div>
+				  <form:input path="name" class="form-control" placeholder="Name"/>
+				</div>
+				
+				<!-- Email -->
+				<div class="input-group mb-3">
+				  <div class="input-group-prepend">
+				    <span class="input-group-text"><i class="fas fa-at"></i></span>
+				  </div>
+				  <form:input path="email" class="form-control" placeholder="Email"/>
+				</div>
+				
+				<!-- Subject -->
+				<div class="input-group mb-3">
+				  <div class="input-group-prepend">
+				    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+				  </div>
+				  <form:input path="subject" class="form-control" placeholder="Subject"/>
+				</div>
+				
+				<!-- Content -->
+				<div class="input-group mb-3">
+				  <div class="input-group-prepend">
+				    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+				  </div>
+				  <form:textarea path="content" class="form-control" placeholder="Your message"/>
+				</div>
+				
+				<!-- Submit Button -->
+				<button type="submit" class="btn btn-primary w-100 mx-auto" id="submitButton">Send<i class="fas fa-arrow-right ml-2"></i></button>
+			</form:form>
+		</div>
+	</div>
+</div>
 </body>
 </html>
