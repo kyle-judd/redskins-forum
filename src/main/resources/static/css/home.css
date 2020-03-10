@@ -33,14 +33,14 @@ body {
 
 
 .h7 {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
 }
 
 .gedf-wrapper {
     margin-top: 0.97rem;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 500px) {
     .gedf-main {
         padding-left: 4rem;
         padding-right: 4rem;
@@ -48,6 +48,33 @@ body {
     .gedf-card {
     	margin-bottom: 2.77rem;
     }
+    
+    .card-header{
+	background-color: rgba(0, 0, 0, 0.9);
+	
+	}
+	
+	.card-body {
+		background-color: rgba(0, 0, 0, 0.8);
+		color: white;
+	}
+	
+	.card {
+		border: 1px solid rgb(128, 0, 32);
+	}
+	
+	#username {
+		color: #FFB700;
+	}
+	
+	#name {
+		color: rgb(128, 0, 32);
+	}
+	
+	img {
+		max-width: 100%;
+		height: auto;
+	}
 }         
 
 /**Reset Bootstrap*/
@@ -87,10 +114,40 @@ a:hover {
 }
 
 .custom-circle-image {
-  width: 20vw; /* note i used vw not px for better responsive */
-  height: 20vw;
+  width: 4vw; /* note i used vw not px for better responsive */
+  height: 4vw;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
-.custom-circle-image img {
-  object-fit: cover;
+.card-header{
+	background-color: rgba(0, 0, 0, 0.9);
+	
+}
+
+.card-body {
+	background-color: rgba(0, 0, 0, 0.8);
+	color: white;
+}
+
+.card {
+	border: 1px solid rgb(128, 0, 32);
+}
+
+#username {
+	color: #FFB700;
+}
+
+#name {
+	color: rgb(128, 0, 32);
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+.post-image {
+	width: 80%;
+	margin: 0 auto;
 }

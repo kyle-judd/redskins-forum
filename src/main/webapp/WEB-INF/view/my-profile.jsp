@@ -30,10 +30,6 @@
 	<title>My Profile</title>
 </head>
 <body>
-	
-	<c:url var="editProfile" value="/editProfile">
-		<c:param name="userId" value="${loggedInUser.id}"/>
-	</c:url>
 
 	<nav id="mainNavbar" class="navbar navbar-expand-md navbar-dark py-0">
 	 		<a class="navbar-brand" href="${pageContext.request.contextPath}/">HTTR</a>
@@ -45,9 +41,6 @@
 	    	<ul class="navbar-nav mr-auto">
 		      	<li class="nav-item active">
 		        	<a class="nav-link" href="${pageContext.request.contextPath}/home">HOME<span class="sr-only">(current)</span></a>
-		      	</li>
-		      	<li class="nav-item">
-		        	<a class="nav-link" href="${editProfile}">EDIT PROFILE</a>
 		      	</li>
 		      	<li class="nav-item">
 		      		<a class="nav-link" href="${pageContext.request.contextPath}/logout">LOGOUT</a>

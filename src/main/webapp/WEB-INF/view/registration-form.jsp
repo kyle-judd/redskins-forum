@@ -44,57 +44,64 @@
 						</div>
 					</c:if>
 					<!-- Username -->
+					
 					<div class="input-group mb-3">
 					  <div class="input-group-prepend">
 					    <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
 					  </div>
 	  				  <form:input path="username" class="form-control" placeholder="Username"/>
-	  				  <form:errors path="username" class="error"/>
+	  				  <form:errors path="username" class="alert alert-danger"/>
 					</div>
 					
 					<!-- Password -->
+					
 					<div class="input-group mb-3">
 					  <div class="input-group-prepend">
 					    <span class="input-group-text"><i class="fas fa-key"></i></span>
 					  </div>
-					  <form:errors path="password" class="error"/>
 					  <form:password path="password" class="form-control" placeholder="Password"/>
+					  <form:errors path="password" class="alert alert-danger"/>
 					</div>
 					
 					<!-- Confirm Password -->
+					
 					<div class="input-group mb-3">
 					  <div class="input-group-prepend">
 					    <span class="input-group-text"><i class="fas fa-key"></i></span>
 					  </div>
-					  <form:errors path="matchingPassword" class="error"/>
 					  <form:password path="matchingPassword" class="form-control" placeholder="Confirm Password"/>
+					  <form:errors path="matchingPassword" class="alert alert-danger"/>
 					</div>
 					
 					<!-- First Name -->
+					
 					<div class="input-group mb-3">
 					  <div class="input-group-prepend">
 					    <span class="input-group-text"><i class="fas fa-pencil-alt"></i></span>
-					  </div>
-					  <form:errors path="firstName" class="error"/>
+					  </div>					  
 	  				  <form:input path="firstName" class="form-control" placeholder="First Name"/>
+	  				  <form:errors path="firstName" class="alert alert-danger"/>
 					</div>
 					
 					<!-- Last Name -->
+					
 					<div class="input-group mb-3">
 					  <div class="input-group-prepend">
 					    <span class="input-group-text"><i class="fas fa-pencil-alt"></i></span>
-					  </div>
-					  <form:errors path="lastName" class="error"/>
+					  </div>					  
 	  				  <form:input path="lastName" class="form-control" placeholder="Last Name"/>
+	  				  <form:errors path="lastName" class="alert alert-danger"/>
 					</div>
 					
+					
 					<!-- Email -->
+					
 					<div class="input-group mb-3">
 					  <div class="input-group-prepend">
 					    <span class="input-group-text"><i class="fas fa-at"></i></span>
-					  </div>
-					  <form:errors path="email" class="error"/>
+					  </div>					  
 	  				  <form:input path="email" class="form-control" placeholder="Email"/>
+	  				  <form:errors path="email" class="alert alert-danger"/>
 					</div>
 					
 					<div class="input-group mb-3">

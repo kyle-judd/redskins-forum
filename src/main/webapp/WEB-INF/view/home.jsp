@@ -16,7 +16,7 @@
 	<title>Home</title>
 </head>
 <body>
-	<nav id="mainNavbar" class="navbar navbar-expand-md navbar-dark fixed-top py-0">
+	<nav id="mainNavbar" class="navbar navbar-expand-md navbar-dark py-0">
   		<a class="navbar-brand" href="${pageContext.request.contextPath}/">HTTR</a>
   		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     		<span class="navbar-toggler-icon"></span>
@@ -44,27 +44,33 @@
 
 <div class="container">
 	<c:forEach var = "post" items = "${allPosts}">
-		<div class="card gedf-card mt-5">
+		<div class="card gedf-card mt-5 mb-5">
 		    <div class="card-header">
 		        <div class="d-flex justify-content-between align-items-center">
 		            <div class="d-flex justify-content-between align-items-center">
 		            	<c:choose>
 							<c:when test="${post.user.profilePicture != null}">
 								<div class="mr-2">
-									<img class="rounded-circle" width="45" src="<c:url value="profile/picture/${post.user.profilePicture.filename}"/>" alt="Profile Picture">
+									<img class="custom-circle-image" width="45" src="<c:url value="profile/picture/${post.user.profilePicture.filename}"/>" alt="Profile Picture">
 								</div>
 							</c:when>
 							<c:when test="${post.user.profilePicture == null}">
 								<div class="mr-2">
-									<img class="rounded-circle" width="45" src="<c:url value="profile/picture/71ed4d29fbad769786476d37b35c5441.jpg"/>">
+									<img class="custom-circle-image" width="45" src="<c:url value="profile/picture/71ed4d29fbad769786476d37b35c5441.jpg"/>">
 								</div>
 							</c:when>
 						</c:choose>
 		                <div class="ml-2">
-		                    <div class="h5 m-0">@${post.user.username}</div>
-		                    <div class="h7 text-muted">${post.user.firstName} ${post.user.lastName}</div>
+		                    <div id="username" class="h5 m-0">@${post.user.username}</div>
+		                    <div id="name" class="h7">${post.user.firstName} ${post.user.lastName}</div>
 		                </div>
 		            </div>
+		            <c:url var="deletePost" value="/deletePost">
+							<c:param name="postId" value="${post.id}"/>
+						</c:url>
+						<c:if test="${post.user.id == currentUser.id}">
+							<a href="${deletePost}" onclick = "if(!(confirm('Are you sure you want to delete this post?'))) return false"><i class="fas fa-trash-alt"></i></a>
+						</c:if>
 		        </div>
 		
 		    </div>
@@ -80,7 +86,9 @@
 		           ${post.content}
 		        </p>
 		        <c:if test = "${post.postImage != null}">
-					<img class="img-fluid" src="<c:url value="posts/images/${post.postImage.fileName}"/>">
+		        	<div class="post-image">
+						<img class="img" src="<c:url value="posts/images/${post.postImage.fileName}"/>">
+					</div>
 				</c:if>
 		    </div>
 		</div>
