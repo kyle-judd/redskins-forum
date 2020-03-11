@@ -19,10 +19,10 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navLinks">
 			<ul class="navbar-nav">
-				<li class="nav-item"><a href="" class="nav-link">ABOUT</a></li>
+				<li class="nav-item"><a href="${pageContext.request.contextPath}/about" class="nav-link">ABOUT</a></li>
 			</ul>
 			<ul class="navbar-nav">
-				<li class="nav-item"><a href="" class="nav-link">CONTACT</a></li>
+				<li class="nav-item"><a href="${pageContext.request.contextPath}/contact/contactForm" class="nav-link">CONTACT</a></li>
 			</ul>
 		</div>
 	</nav>
