@@ -17,7 +17,7 @@
 </head>
 
 <body>
-<nav id="mainNavbar" class="navbar navbar-expand-md navbar-dark fixed-top py-0">
+<nav id="mainNavbar" class="navbar navbar-expand-md navbar-dark py-0">
   		<a class="navbar-brand" href="${pageContext.request.contextPath}/">HTTR</a>
   		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     		<span class="navbar-toggler-icon"></span>
