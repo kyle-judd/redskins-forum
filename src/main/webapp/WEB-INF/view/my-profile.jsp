@@ -31,92 +31,92 @@
 </head>
 <body>
 
-	<nav id="mainNavbar" class="navbar navbar-expand-md navbar-dark py-0">
-	 		<a class="navbar-brand" href="${pageContext.request.contextPath}/">HTTR</a>
-	 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-	   		<span class="navbar-toggler-icon"></span>
-	 		</button>
+<nav id="mainNavbar" class="navbar navbar-expand-md navbar-dark py-0">
+ 		<a class="navbar-brand" href="${pageContext.request.contextPath}/">HTTR</a>
+ 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+   		<span class="navbar-toggler-icon"></span>
+ 		</button>
+
+  	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+    	<ul class="navbar-nav mr-auto">
+	      	<li class="nav-item active">
+	        	<a class="nav-link" href="${pageContext.request.contextPath}/home">HOME<span class="sr-only">(current)</span></a>
+	      	</li>
+	      	<li class="nav-item">
+	      		<a class="nav-link" href="${pageContext.request.contextPath}/logout">LOGOUT</a>
+	      	</li>
+    	</ul>
+    	<ul class="navbar-nav ml-auto">
+    		<li class="nav-item">
+    			<a href="${pageContext.request.contextPath}/showPost" class="nav-link">NEW POST<i class="fas fa-pen ml-2"></i></a>
+    		</li>
+    	</ul>
+  	</div>
+</nav>
 	
-	  	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-	    	<ul class="navbar-nav mr-auto">
-		      	<li class="nav-item active">
-		        	<a class="nav-link" href="${pageContext.request.contextPath}/home">HOME<span class="sr-only">(current)</span></a>
-		      	</li>
-		      	<li class="nav-item">
-		      		<a class="nav-link" href="${pageContext.request.contextPath}/logout">LOGOUT</a>
-		      	</li>
-	    	</ul>
-	    	<ul class="navbar-nav ml-auto">
-	    		<li class="nav-item">
-	    			<a href="${pageContext.request.contextPath}/showPost" class="nav-link">NEW POST<i class="fas fa-pen ml-2"></i></a>
-	    		</li>
-	    	</ul>
-	  	</div>
-	</nav>
-	
-	<div class="container">
-		<div class="row justify-content-around py-5">
-			<div class="col-md-12 px-0">
-				<div id="profileArea" class="mx-auto">
-					<h1 id="header" class="text-center">My Profile</h1>
-					<hr>
-					<div class="row">
-						<div class="col-md-6 pr-0 divider">
-							<c:if test="${loggedInUser.profilePicture != null}">
-								<div class="row">
-									<div class="col-md-12">
-										<div class="avatar cover mx-auto">
-												
-										</div>
+<div class="container">
+	<div class="row justify-content-around py-5">
+		<div class="col-xs-4 col-md-12 px-0">
+			<div id="profileArea" class="mx-auto">
+				<h1 id="header" class="text-center">My Profile</h1>
+				<hr>
+				<div class="row">
+					<div class="col-md-6 pr-0 divider">
+						<c:if test="${loggedInUser.profilePicture != null}">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="avatar cover mx-auto">
+											
 									</div>
 								</div>
-							</c:if>
-							<div class="row">
-								<div class="col-md-12 text-center group-info">
-									<p class="ml-5 mb-5 user-info-heading">Name: <span class="user-info">${loggedInUser.firstName} ${loggedInUser.lastName}</span></p>
-								</div>
 							</div>
-							<div class="row">
-								<div class="col-md-12 text-center group-info">
-									<p class="ml-5 mb-5 user-info-heading">Username: <span class="user-info">${loggedInUser.username}</span></p>
-								</div>
+						</c:if>
+						<div class="row">
+							<div class="col-md-12 text-center group-info">
+								<p class="ml-5 mb-5 user-info-heading">Name: <span class="user-info">${loggedInUser.firstName} ${loggedInUser.lastName}</span></p>
 							</div>
-							<div class="row">
-								<div class="col-md-12 text-center group-info">
-									<p class="ml-5 mb-5 user-info-heading">Email: <span class="user-info">${loggedInUser.email}</span></p>
-								</div>
-							</div>
-					
 						</div>
-						<div class="col-md-6 pl-0">
-							<p class="lead text-center post-header">Your Posts</p>
-							<div id="postChain">
-								<c:forEach var = "post" items = "${postsByUser}">
-									<div class="row justify-content-center">	
-										<div id="postArea" class="col-md-8">
-											${post.content}
-											<p>Submitted by: <span id="username">${post.user.username}</span> at ${post.date}</p>
-											<c:if test = "${post.postImage != null}">
-												<div id="imageArea">
-													<img class="image" src="<c:url value="posts/images/${post.postImage.fileName}"/>">
-												</div>
-											</c:if>
-											<c:url var="deletePost" value="/deletePost">
-												<c:param name="postId" value="${post.id}"/>
-											</c:url>
-											<c:if test="${post.user.id == currentUser.id}">
-												<a href="${deletePost}" onclick = "if(!(confirm('Are you sure you want to delete this post?'))) return false"><i class="fas fa-trash-alt"></i></a>
-											</c:if>
-										</div>
-									</div>
-								</c:forEach>
+						<div class="row">
+							<div class="col-md-12 text-center group-info">
+								<p class="ml-5 mb-5 user-info-heading">Username: <span class="user-info">${loggedInUser.username}</span></p>
 							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 text-center group-info">
+								<p class="ml-5 mb-5 user-info-heading">Email: <span class="user-info">${loggedInUser.email}</span></p>
+							</div>
+						</div>
+				
+					</div>
+					<div class="col-md-6 pl-0">
+						<p class="lead text-center post-header">Your Posts</p>
+						<div id="postChain">
+							<c:forEach var = "post" items = "${postsByUser}">
+								<div class="row justify-content-center">	
+									<div id="postArea" class="col-md-8">
+										${post.content}
+										<p>Submitted by: <span id="username">${post.user.username}</span> at ${post.date}</p>
+										<c:if test = "${post.postImage != null}">
+											<div id="imageArea">
+												<img class="image" src="<c:url value="posts/images/${post.postImage.fileName}"/>">
+											</div>
+										</c:if>
+										<c:url var="deletePost" value="/deletePost">
+											<c:param name="postId" value="${post.id}"/>
+										</c:url>
+										<c:if test="${post.user.id == currentUser.id}">
+											<a href="${deletePost}" onclick = "if(!(confirm('Are you sure you want to delete this post?'))) return false"><i class="fas fa-trash-alt"></i></a>
+										</c:if>
+									</div>
+								</div>
+							</c:forEach>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>	
-	</div>
+		</div>
+	</div>	
+</div>
 
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

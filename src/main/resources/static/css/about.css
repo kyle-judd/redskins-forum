@@ -1,6 +1,4 @@
-html{
-	height: 100%;
-}
+
 body {
 	height: 100%;
 	background-image:
@@ -40,8 +38,9 @@ body {
 	color: white;
 }
 
-.display-4 {
-	font-size: 100;
+h1 {
+	font-weight: 100;
+	color: #FFB700;
 }
 
 hr {
@@ -49,8 +48,12 @@ hr {
 	width: 50%;
 }
 
-#about {
-	width: 50%;
-	margin-left: 25%;
-	margin-right: 25%;
+p {
+	color: white;
+	font-weight: 100;
+	font-size: 1.25rem;
+}
+
+#section {
+	margin-top: 100px;
 }

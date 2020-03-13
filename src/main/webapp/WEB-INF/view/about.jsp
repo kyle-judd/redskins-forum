@@ -17,34 +17,33 @@
 </head>
 
 <body>
-	<nav id="mainNavbar" class="navbar navbar-expand-md navbar-dark fixed-top py-0">
-	  		<a class="navbar-brand" href="${pageContext.request.contextPath}/">HTTR</a>
-	  		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-	    		<span class="navbar-toggler-icon"></span>
-	  		</button>
-	
-	  	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-	    	<ul class="navbar-nav mr-auto">
-		      	<li class="nav-item">
-		        	<a class="nav-link" href="${pageContext.request.contextPath}/about">ABOUT</a>
-		      	</li>
-		      	<li class="nav-item">
-		      		<a class="nav-link" href="${pageContext.request.contextPath}/contact/contactForm">CONTACT</a>
-		      	</li>
-	    	</ul>
-	  	</div>
-	</nav>
-	<div class="container h-100 d-flex">
-		<div class="jumbotron my-auto">
-			<div>
-			  <h1 class="display-4 text-center">About</h1>
-			  <hr>
-			  <div id="about">
-			  	<p class="lead text-center">Skins Talk is a website where fans of the Washington Redskins can go to discuss anything about the organization! I've always had a love for the team and I wanted to create something that expresses that love while further advancing my developer skills. </p>
-			  </div>			 
-			 </div>
+<nav id="mainNavbar" class="navbar navbar-expand-md navbar-dark fixed-top py-0">
+  		<a class="navbar-brand" href="${pageContext.request.contextPath}/">HTTR</a>
+  		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    		<span class="navbar-toggler-icon"></span>
+  		</button>
+
+  	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+    	<ul class="navbar-nav mr-auto">
+	      	<li class="nav-item">
+	        	<a class="nav-link" href="${pageContext.request.contextPath}/about">ABOUT</a>
+	      	</li>
+	      	<li class="nav-item">
+	      		<a class="nav-link" href="${pageContext.request.contextPath}/contact/contactForm">CONTACT</a>
+	      	</li>
+    	</ul>
+  	</div>
+</nav>
+
+<div id="section" class="container">
+	<div class="row">
+		<div class="col-xs-4">
+		  <h1 class="text-center">About</h1>
+		  <hr>
+		  	<p class="text-center">Skins Talk is a website where fans of the Washington Redskins can go to discuss anything about the organization! I've always had a love for the team and I wanted to create something that expresses that love while further advancing my developer skills. </p>			 
 		</div>
 	</div>
+</div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
