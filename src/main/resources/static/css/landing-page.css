@@ -6,6 +6,7 @@ body {
     				),
     				url(https://media.gettyimages.com/photos/dwayne-haskins-of-the-washington-redskins-looks-to-pass-against-the-picture-id1190294193?s=2048x2048);
 	background-size: cover;
+	background-repeat: no-repeat;
 	background-position: center;
 	font-family: "Montserrat";
 }
