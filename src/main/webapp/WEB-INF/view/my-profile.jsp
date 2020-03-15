@@ -1,5 +1,7 @@
 <%@ taglib uri = "http://www.springframework.org/tags/form" prefix = "form"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>  
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
@@ -55,69 +57,193 @@
 </nav>
 	
 <div class="container">
-	<div class="row justify-content-around py-5">
-		<div class="col-xs-4 col-md-12 px-0">
-			<div id="profileArea" class="mx-auto">
-				<h1 id="header" class="text-center">My Profile</h1>
-				<hr>
-				<div class="row">
-					<div class="col-md-6 pr-0 divider">
-						<c:if test="${loggedInUser.profilePicture != null}">
-							<div class="row">
-								<div class="col-md-12">
-									<div class="avatar cover mx-auto">
-											
-									</div>
-								</div>
+    <div class="row justify-content-center my-2 mx-1">
+        <div class="col-lg-8 order-lg-2 custom-background px-0">
+            <ul class="nav nav-tabs custom-header-color">
+                <li class="nav-item">
+                    <a href="" data-target="#profile" data-toggle="tab" class="nav-link">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" data-target="#yourposts" data-toggle="tab" class="nav-link">Your Posts</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Edit</a>
+                </li>
+            </ul>
+            <div class="custom-body-color tab-content py-4">
+                <div class="tab-pane active" id="profile">
+                    <h5 class="mb-3 ml-1">User Profile</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6 class="ml-1">Username:</h6>
+                            <p class="ml-1">
+                                ${loggedInUser.username}
+                            </p>
+                            <h6 class="ml-1">Name:</h6>
+                            <p class="ml-1">
+                                ${loggedInUser.firstName} ${loggedInUser.lastName}
+                            </p>
+                            <h6 class="ml-1">Email:</h6>
+                            <p class="ml-1">
+                                ${loggedInUser.email}
+                            </p>
+                        </div>
+                          <div class="col-lg-4 order-lg-1 text-center">
+				            <img src="//placehold.it/150" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+				            <h6 class="mt-2">Upload a different photo</h6>
+				            <label class="custom-file">
+				                <input type="file" id="file" class="custom-file-input">
+				                <span class="custom-file-control">Choose file</span>
+				            </label>
+				          </div>
+                    </div>
+                    <!--/row-->
+                </div>
+                <div class="tab-pane" id="yourposts">
+                    	<c:forEach var = "post" items = "${postsByUser}">
+							<div class="card gedf-card mt-5 mb-5">
+							    <div class="card-header">
+							        <div class="d-flex justify-content-between align-items-center">
+							            <div class="d-flex justify-content-between align-items-center">
+							            	<c:choose>
+												<c:when test="${post.user.profilePicture != null}">
+													<div class="mr-2">
+														<img class="custom-circle-image" width="45" src="<c:url value="profile/picture/${post.user.profilePicture.filename}"/>" alt="Profile Picture">
+													</div>
+												</c:when>
+												<c:when test="${post.user.profilePicture == null}">
+													<div class="mr-2">
+														<img class="custom-circle-image" width="45" src="<c:url value="profile/picture/71ed4d29fbad769786476d37b35c5441.jpg"/>">
+													</div>
+												</c:when>
+											</c:choose>
+							                <div class="ml-2">
+							                    <div id="username" class="h5 m-0">@${post.user.username}</div>
+							                    <div id="name" class="h7">${post.user.firstName} ${post.user.lastName}</div>
+							                </div>
+							            </div>
+							            <c:url var="deletePost" value="/deletePost">
+												<c:param name="postId" value="${post.id}"/>
+											</c:url>
+											<c:if test="${post.user.id == loggedInUser.id}">
+												<a href="${deletePost}" onclick = "if(!(confirm('Are you sure you want to delete this post?'))) return false"><i class="fas fa-trash-alt"></i></a>
+											</c:if>
+							        </div>
+							
+							    </div>
+							    <div class="card-body">
+							    	<c:set var="Date" value="${post.date}" />
+							        <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i><fmt:formatDate type="both" value="${Date}"/></div>
+							        <a class="card-link" href="#">
+							            <h5 class="card-title"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit consectetur
+							                deserunt illo esse distinctio.</h5>
+							        </a>
+							
+							        <p class="card-text">
+							           ${post.content}
+							        </p>
+							        <c:if test = "${post.postImage != null}">
+							        	<div class="post-image">
+											<img class="img" src="<c:url value="posts/images/${post.postImage.fileName}"/>">
+										</div>
+									</c:if>
+							    </div>
 							</div>
-						</c:if>
-						<div class="row">
-							<div class="col-md-12 text-center group-info">
-								<p class="ml-5 mb-5 user-info-heading">Name: <span class="user-info">${loggedInUser.firstName} ${loggedInUser.lastName}</span></p>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12 text-center group-info">
-								<p class="ml-5 mb-5 user-info-heading">Username: <span class="user-info">${loggedInUser.username}</span></p>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12 text-center group-info">
-								<p class="ml-5 mb-5 user-info-heading">Email: <span class="user-info">${loggedInUser.email}</span></p>
-							</div>
-						</div>
-				
-					</div>
-					<div class="col-md-6 pl-0">
-						<p class="lead text-center post-header">Your Posts</p>
-						<div id="postChain">
-							<c:forEach var = "post" items = "${postsByUser}">
-								<div class="row justify-content-center">	
-									<div id="postArea" class="col-md-8">
-										${post.content}
-										<p>Submitted by: <span id="username">${post.user.username}</span> at ${post.date}</p>
-										<c:if test = "${post.postImage != null}">
-											<div id="imageArea">
-												<img class="image" src="<c:url value="posts/images/${post.postImage.fileName}"/>">
-											</div>
-										</c:if>
-										<c:url var="deletePost" value="/deletePost">
-											<c:param name="postId" value="${post.id}"/>
-										</c:url>
-										<c:if test="${post.user.id == currentUser.id}">
-											<a href="${deletePost}" onclick = "if(!(confirm('Are you sure you want to delete this post?'))) return false"><i class="fas fa-trash-alt"></i></a>
-										</c:if>
-									</div>
-								</div>
-							</c:forEach>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>	
+						</c:forEach>
+                </div>
+                <div class="tab-pane" id="edit">
+                    <form role="form">
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">First name</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="text" value="Jane">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Last name</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="text" value="Bishop">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Email</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="email" value="email@gmail.com">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Company</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="text" value="">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Website</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="url" value="">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Address</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="text" value="" placeholder="Street">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label"></label>
+                            <div class="col-lg-6">
+                                <input class="form-control" type="text" value="" placeholder="City">
+                            </div>
+                            <div class="col-lg-3">
+                                <input class="form-control" type="text" value="" placeholder="State">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Time Zone</label>
+                            <div class="col-lg-9">
+                                <select id="user_time_zone" class="form-control" size="0">
+                                    <option value="Hawaii">(GMT-10:00) Hawaii</option>
+                                    <option value="Alaska">(GMT-09:00) Alaska</option>
+                                    <option value="Pacific Time (US &amp; Canada)">(GMT-08:00) Pacific Time (US &amp; Canada)</option>
+                                    <option value="Arizona">(GMT-07:00) Arizona</option>
+                                    <option value="Mountain Time (US &amp; Canada)">(GMT-07:00) Mountain Time (US &amp; Canada)</option>
+                                    <option value="Central Time (US &amp; Canada)" selected="selected">(GMT-06:00) Central Time (US &amp; Canada)</option>
+                                    <option value="Eastern Time (US &amp; Canada)">(GMT-05:00) Eastern Time (US &amp; Canada)</option>
+                                    <option value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Username</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="text" value="janeuser">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Password</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="password" value="11111122333">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Confirm password</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="password" value="11111122333">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label"></label>
+                            <div class="col-lg-9">
+                                <input type="reset" class="btn btn-secondary" value="Cancel">
+                                <input type="button" class="btn btn-primary" value="Save Changes">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

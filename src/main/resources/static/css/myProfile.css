@@ -11,10 +11,7 @@ body {
 	background-attachment: fixed;
 
 	font-family: "Montserrat";
-}
-
-html, body {
-		height: 100%;
+	color: white;
 }
 
 #mainNavbar {
@@ -35,89 +32,72 @@ html, body {
 	color: #FFB700;
 }
 
-#profileArea {
-	width: 100%;
-	height: 100%;
+
+
+.h7 {
+    font-size: 0.9rem;
+}
+
+.gedf-wrapper {
+    margin-top: 0.97rem;
+}
+
+@media (min-width: 375px) {
+    .gedf-main {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    
+    .gedf-card {
+    	margin-bottom: 2.77rem;
+    }
+    
+    .card-header{
 	background-color: rgba(0, 0, 0, 0.9);
-	border-radius: 25px;
-}
+	
+	}
+	
+	.card-body {
+		background-color: rgba(0, 0, 0, 0.8);
+		color: white;
+	}
+	
+	.card {
+		border: 1px solid rgb(128, 0, 32);
+	}
+	
+	#username {
+		color: #FFB700;
+	}
+	
+	#name {
+		color: rgb(128, 0, 32);
+	}
+	
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+	
+	body {
+		background-image:
+	    				linear-gradient(
+	      				rgba(0, 0, 0, 0.5),
+	      				rgba(0, 0, 0, 0.5)
+	    				),
+	    				url(https://media.gettyimages.com/photos/dwayne-haskins-of-the-washington-redskins-looks-to-pass-against-the-picture-id1190294193?s=2048x2048);
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+	
+		font-family: "Montserrat";
+	}
+}         
 
-#header {
-	color: #FFB700;
-	font-weight: 200;
-	margin-top: 10px;	
-}
-
-hr { 
-	display: block;
-	height: 1px;
-    border: 0; 
-    border-top: 1px solid rgb(128, 0, 32);
-    margin-left: 100px; 
-    margin-right: 100px;
-    padding: 0; 
-}
-
-.user-info {
-	font-size: 25px;
-	font-weight: 200;	
-	color: rgb(128, 0, 32);
-}
-
-.user-info-heading {
-	font-size: 25px;
-	font-weight: 200;
-	color: #FFB700;
-}
-
-.profilePicture {
-	display: inline-block;
-	width: 150px;
-	height: 150px;
-	border-radius: 50%;
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
-}
-
-#postArea {
-	background-color: rgba(0, 0, 0, 0.5);
-	color: white;
-	font-family: "Montserrat" sans-serif;
-	font-weight: 200;
-	overflow-wrap: break-word;
-	word-wrap: break-word;
-	border-radius: 15px;
-	border: 2px solid #FFB700;
-	margin: 20px 0px;
-	padding: 10px;
-}
-
-#postChain {
-	overflow-y: scroll;
-	overflow-x: hidden;
-	height: 500px;
-}
-
-#username {
-	color: rgb(128, 0, 32);
-}
-
-.image {
-	width: 100%;
-	height: 100%;
-}
-
-#imageArea {
-	height: 70%;
-}
-
-.divider {
-	border-right: 2px solid rgb(128, 0, 32);
-}
-
-.group-info {
-	margin-top: 80px;
+/**Reset Bootstrap*/
+.dropdown-toggle::after {
+    content: none;
+    display: none;
 }
 
 	/* width */
@@ -142,6 +122,66 @@ hr {
   background: white; 
 }
 
-.post-header {
+a {
+	color: #FFB700;
+}
+
+a:hover {
+	color: rgb(128, 0, 32);
+}
+
+.custom-circle-image {
+  width: 4vw; /* note i used vw not px for better responsive */
+  height: 4vw;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.card-header{
+	background-color: rgba(0, 0, 0, 0.9);
+	
+}
+
+.card-body {
+	background-color: rgba(0, 0, 0, 0.8);
 	color: white;
+}
+
+.card {
+	border: 1px solid rgb(128, 0, 32);
+}
+
+#username {
+	color: #FFB700;
+}
+
+#name {
+	color: rgb(128, 0, 32);
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+.post-image {
+	width: 80%;
+	margin: 0 auto;
+}
+
+.custom-background {
+	background-color: #FFF;
+}
+
+.custom-header-color {
+	background-color: rgba(0, 0, 0, 0.9);
+}
+
+.custom-body-color {
+	background-color: rgba(0, 0, 0, 0.8);
+	color: white;
+}
+
+.nav-tabs {
+    border-bottom: 1px solid rgb(128, 0, 32);
 }
