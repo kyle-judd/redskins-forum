@@ -68,3 +68,9 @@ label {
 	font-family: "Montserrat", sans-serif;
 	cursor: pointer;
 }
+
+@Media (min-width: 375px) {
+	#content {
+		margin-top: 50px;
+	}
+}

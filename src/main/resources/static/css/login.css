@@ -59,3 +59,10 @@ h1 {
 #content {
 	margin-top: 200px;
 }
+
+@Media (min-width: 375px) {
+	
+	#content {
+		margin-top: 100px;
+	}
+}
