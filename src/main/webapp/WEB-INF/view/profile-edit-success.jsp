@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Registration Success</title>
+	<title>Profile Edit Successful</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,400,700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
@@ -34,7 +34,7 @@
 	<div class="row justify-content-around">
 		<div class="col-lg-6">
 			<div id="content">
-				<h1 class="text-center">Successfully Registered!</h1>
+				<h1 class="text-center">Profile successfully edited!</h1>
 				<a class="btn btn-warning mx-auto"href="${pageContext.request.contextPath}/login">Login With New Account</a>
 			</div>
 		</div>

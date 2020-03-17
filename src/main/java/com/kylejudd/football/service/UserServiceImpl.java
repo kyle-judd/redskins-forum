@@ -71,4 +71,20 @@ public class UserServiceImpl implements UserService {
 		return roles.stream().map(role -> new SimpleGrantedAuthority(role.getType())).collect(Collectors.toList());
 	}
 
+	@Override
+	@Transactional
+	public void updateUserProfile(CustomUser customUser, User currentUser) {
+
+		currentUser.setUsername(customUser.getUsername());
+		currentUser.setPassword(passwordEncoder.encode(customUser.getPassword()));
+		currentUser.setFirstName(customUser.getFirstName());
+		currentUser.setLastName(customUser.getLastName());
+		currentUser.setEmail(customUser.getEmail());
+		currentUser.setProfilePicture(customUser.getProfilePicture());
+		currentUser.setRoles(Arrays.asList(roleDao.findRoleByName("ROLE_USER")));
+
+		userDao.updateUserProfile(currentUser);
+		
+	}
+
 }

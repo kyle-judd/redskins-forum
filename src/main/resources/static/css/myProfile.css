@@ -178,10 +178,22 @@ img {
 }
 
 .custom-body-color {
-	background-color: rgba(0, 0, 0, 0.8);
+	background-color: rgba(0, 0, 0, 0.7);
 	color: white;
 }
 
 .nav-tabs {
     border-bottom: 1px solid rgb(128, 0, 32);
+}
+
+.btn-primary {
+	background-color: #FFB700;
+	border-color: #FFB700;
+	color: black;
+}
+
+.btn-primary:hover {
+	background-color: rgb(128, 0, 32);
+	border-color: rgb(128, 0, 32);
+	color: white;
 }

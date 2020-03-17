@@ -15,6 +15,7 @@ public class UserDaoImpl implements UserDao {
 	
 	private Logger logger = Logger.getLogger(Logger.class);
 	
+	
 	@Autowired
 	private EntityManager entityManager;
 	
@@ -46,6 +47,25 @@ public class UserDaoImpl implements UserDao {
 		Session session =entityManager.unwrap(Session.class);
 		
 		session.saveOrUpdate(user);
+	}
+
+	@Override
+	public void updateUserProfile(User userToUpdate) {
+		
+		Session session = entityManager.unwrap(Session.class);
+		
+		session.update(userToUpdate);
+		
+	}
+
+	@Override
+	public User findUserById(int id) {
+		
+		Session session = entityManager.unwrap(Session.class);
+		
+		User user = session.get(User.class, id);
+		
+		return user;
 	}
 
 }

@@ -11,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kylejudd.football.entity.Post;
 import com.kylejudd.football.entity.User;
@@ -43,9 +42,27 @@ public class ProfileController {
 		
 		model.addAttribute("postsByUser", postsByUser);
 		
+		model.addAttribute("editUser", new CustomUser());
+		
 		model.addAttribute("loggedInUser", currentUser);
 		
 		return "my-profile";
+	}
+	
+	@PostMapping("/editUser")
+	public String editUser(@ModelAttribute("editUser") CustomUser customUser, Model model) {
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		
+		UserDetails currentUserDetails = userService.loadUserByUsername(auth.getName());
+		
+		String currentUserName = currentUserDetails.getUsername();
+		
+		User currentUser = userService.findByUserName(currentUserName);
+		
+		userService.updateUserProfile(customUser, currentUser);
+		
+		return "profile-edit-success";
 	}
 
 }
