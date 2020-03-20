@@ -46,7 +46,7 @@
 						</div>
 						<div class="form-group">
 							<label for = "image" class="w-50 mx-auto text-center"><i class="far fa-image mr-2"></i>Upload picture</label>
-							<input type="file" id="image" name="imageFile">
+							<input type="file" id="image" name="uploadedImage">
 						</div>
 						<button type="submit" id="submitPost" class="btn btn-primary w-50 mx-auto">Submit<i class="fas fa-angle-double-right ml-2"></i></button>
 					</form:form>

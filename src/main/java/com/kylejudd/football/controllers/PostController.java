@@ -1,5 +1,7 @@
 package com.kylejudd.football.controllers;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -15,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.kylejudd.football.entity.Post;
 import com.kylejudd.football.entity.PostImage;
 import com.kylejudd.football.entity.User;
+import com.kylejudd.football.service.CloudinaryServiceImpl;
 import com.kylejudd.football.service.ImageService;
 import com.kylejudd.football.service.PostService;
 import com.kylejudd.football.service.UserService;
@@ -31,6 +34,9 @@ public class PostController {
 	@Autowired
 	private ImageService imageService;
 	
+	@Autowired
+	private CloudinaryServiceImpl cloudinaryService;
+	
 	@GetMapping("/showPost")
 	public String showPost(Model theModel) {
 		
@@ -42,7 +48,7 @@ public class PostController {
 	}
 	
 	@PostMapping("/savePost")
-	public String saveMapping(@RequestParam("imageFile") MultipartFile imageFile, @ModelAttribute("post") Post thePost) {
+	public String saveMapping(@RequestParam("uploadedImage") MultipartFile uploadedImage, @ModelAttribute("post") Post thePost) {
 		
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		
@@ -56,16 +62,23 @@ public class PostController {
 		
 		thePost.setUser(currentUser);
 		
-		try {
-			imageService.saveImage(imageFile);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		Map upload = cloudinaryService.uploadPostImage(uploadedImage);
 		
-		PostImage postImage = imageService.getImageByFileName(imageFile.getOriginalFilename());
+		String path = (String) upload.get("url");
 		
-		thePost.setPostImage(postImage);
+		String publicId = (String) upload.get("public_id");
+		
+		String format = (String) upload.get("format");
+		
+		String fileName = publicId + format;
+		
+		PostImage postImage = new PostImage(path, fileName);
+		
+		cloudinaryService.saveToDatabase(postImage);
+		
+		PostImage postImageFromDatabase = cloudinaryService.getImageByFileName(fileName);
+		
+		thePost.setPostImage(postImageFromDatabase);
 		
 		postService.savePost(thePost);
 		

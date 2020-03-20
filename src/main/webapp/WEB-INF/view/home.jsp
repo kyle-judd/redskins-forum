@@ -87,7 +87,7 @@
 		        </p>
 		        <c:if test = "${post.postImage != null}">
 		        	<div class="post-image">
-						<img class="img" src="<c:url value="posts/images/${post.postImage.fileName}"/>">
+						<img class="img" src="${post.postImage.path}">
 					</div>
 				</c:if>
 		    </div>
