@@ -1,5 +1,7 @@
 package com.kylejudd.football.controllers;
 
+import java.util.Map;
+
 import javax.validation.Valid;
 
 import org.jboss.logging.Logger;
@@ -19,7 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.kylejudd.football.entity.ProfilePicture;
 import com.kylejudd.football.entity.User;
-import com.kylejudd.football.service.ImageService;
+import com.kylejudd.football.service.CloudinaryServiceImpl;
 import com.kylejudd.football.service.UserService;
 import com.kylejudd.football.user.CustomUser;
 
@@ -33,7 +35,7 @@ public class RegistrationController {
 	private UserService userService;
 	
 	@Autowired
-	private ImageService imageService;
+	private CloudinaryServiceImpl cloudinaryService;
 	
 	@InitBinder
 	public void initBinder(WebDataBinder dataBinder) {
@@ -74,16 +76,28 @@ public class RegistrationController {
 			return "registration-form";
 		}
 		
-		try {
-			imageService.saveProfilePicture(image);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if(image == null) {
+			user.setProfilePicture(cloudinaryService.getProfilePictureByFileName("71ed4d29fbad769786476d37b35c5441.jpg"));
+		} else {
+			Map uploadedProfilePicture = cloudinaryService.uploadPostImage(image);
+			
+			String path = (String) uploadedProfilePicture.get("url");
+			
+			String publicId = (String) uploadedProfilePicture.get("public_id");
+			
+			String format = (String) uploadedProfilePicture.get("format");
+			
+			String fileName = publicId + format;
+			
+			ProfilePicture profilePicture = new ProfilePicture(path, fileName);
+			
+			cloudinaryService.saveProfilePictureToDatabase(profilePicture);
+			
+			ProfilePicture profilePictureFromDatabase = cloudinaryService.getProfilePictureByFileName(fileName);
+			
+			user.setProfilePicture(profilePictureFromDatabase);
+			
 		}
-		
-		ProfilePicture profilePicture = imageService.getProfilePictureByFileName(image.getOriginalFilename());
-		
-		user.setProfilePicture(profilePicture);
 		
 		userService.save(user);
 		

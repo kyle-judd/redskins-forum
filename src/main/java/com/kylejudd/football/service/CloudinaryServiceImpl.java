@@ -18,6 +18,7 @@ import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import com.kylejudd.football.dao.CloudinaryDao;
 import com.kylejudd.football.entity.PostImage;
+import com.kylejudd.football.entity.ProfilePicture;
 
 @Service
 public class CloudinaryServiceImpl implements CloudinaryService {
@@ -28,13 +29,12 @@ public class CloudinaryServiceImpl implements CloudinaryService {
 	@Autowired
 	private CloudinaryDao cloudinaryDao;
 	
-	@SuppressWarnings("rawtypes")
-	public Map uploadPostImage(MultipartFile multipartFile) {
+	@Override
+	public Map uploadPostImage(MultipartFile postImage) {
 		
 		try {
-			File uploadedFile = convertMultipartToFile(multipartFile);
-			Map params = ObjectUtils.asMap("pubic_id", "post_images/");
-			Map uploadResult = cloudinary.uploader().upload(uploadedFile, params);
+			File uploadedFile = convertMultipartToFile(postImage);
+			Map uploadResult = cloudinary.uploader().upload(uploadedFile, ObjectUtils.emptyMap());
 			return uploadResult;
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -57,13 +57,38 @@ public class CloudinaryServiceImpl implements CloudinaryService {
 
 	@Override
 	@Transactional
-	public void saveToDatabase(PostImage postImage) {
-		cloudinaryDao.saveToDatabase(postImage);
+	public void savePostImageToDatabase(PostImage postImage) {
+		cloudinaryDao.savePostImageToDatabase(postImage);
 	}
 
 	@Override
 	@Transactional
-	public PostImage getImageByFileName(String filename) {
-		return cloudinaryDao.getImageByFileName(filename);
+	public PostImage getPostImageByFileName(String filename) {
+		return cloudinaryDao.getPostImageByFileName(filename);
+	}
+
+	@Override
+	@Transactional
+	public void saveProfilePictureToDatabase(ProfilePicture profilePicture) {
+		cloudinaryDao.saveProfilePictureToDatabase(profilePicture);
+	}
+
+	@Override
+	@Transactional
+	public ProfilePicture getProfilePictureByFileName(String filename) {
+		return cloudinaryDao.getProfilePictureByFileName(filename);
+	}
+
+	@Override
+	public Map uploadProfilePicture(MultipartFile uploadedImage) {
+		
+		try {
+			File uploadedFile = convertMultipartToFile(uploadedImage);
+			Map uploadResult = cloudinary.uploader().upload(uploadedFile, ObjectUtils.emptyMap());
+			return uploadResult;
+		} catch (IOException e) {
+			e.printStackTrace();
+			throw new RuntimeException();
+		}
 	}
 }

@@ -9,5 +9,6 @@ public interface UserService extends UserDetailsService{
 	
 	User findByUserName(String username);
 	void updateUserProfile(CustomUser user, User currentUser);
+	void saveOrUpdateUser(User user);
 	void save(CustomUser user);
 }

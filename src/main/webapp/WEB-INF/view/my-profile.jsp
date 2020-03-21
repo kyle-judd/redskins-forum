@@ -89,12 +89,15 @@
                             </p>
                         </div>
                           <div class="col-lg-4 order-lg-1 text-center">
-				            <img src="<c:url value="profile/picture/${loggedInUser.profilePicture.filename}"/>" class="mx-auto img-fluid img-circle d-block" alt="avatar">
-				            <h6 class="mt-2">Upload a different photo</h6>
-				            <label class="custom-file">
-				                <input type="file" id="file" class="custom-file-input">
-				                <span class="custom-file-control">Choose file</span>
-				            </label>
+				            <img src="${loggedInUser.profilePicture.path}" class="mx-auto img-fluid img-circle d-block custom-circle-image" alt="avatar">
+				            <form:form action="${pageContext.request.contextPath}/editProfilePicture" enctype="multipart/form-data" method="POST">
+					            <h6 class="mt-2">Upload a different photo</h6>
+					            <label class="custom-file">
+					                <input type="file" id="file" name="profile-image" class="custom-file-input">
+					                <span class="custom-file-control">Choose file</span>
+					            </label>
+					            <input type="submit">
+				            </form:form>
 				          </div>
                     </div>
                     <!--/row-->
@@ -155,37 +158,37 @@
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">First name</label>
                             <div class="col-lg-9">
-                                <form:input class="form-control" value="${loggedInUser.firstName}" path="firstName"/>
+                                <form:input class="form-control" placeholder="${loggedInUser.firstName}" path="firstName"/>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">Last name</label>
                             <div class="col-lg-9">
-                                <form:input class="form-control" value="${loggedInUser.lastName}" path="lastName"/>
+                                <form:input class="form-control" placeholder="${loggedInUser.lastName}" path="lastName"/>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">Email</label>
                             <div class="col-lg-9">
-                                <form:input class="form-control" value="${loggedInUser.email}" path="email"/>
+                                <form:input class="form-control" placeholder="${loggedInUser.email}" path="email"/>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">Username</label>
                             <div class="col-lg-9">
-                                <form:input class="form-control" value="${loggedInUser.username}" path="username"/>
+                                <form:input class="form-control" placeholder="${loggedInUser.username}" path="username"/>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">Password</label>
                             <div class="col-lg-9">
-                                <form:password class="form-control" value="New Password" path="password"/>
+                                <form:password class="form-control" placeholder="New Password" path="password"/>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">Confirm password</label>
                             <div class="col-lg-9">
-                                <form:password class="form-control" value="Confirm New Password" path="matchingPassword"/>
+                                <form:password class="form-control" placeholder="Confirm New Password" path="matchingPassword"/>
                             </div>
                         </div>
                         <div class="form-group row">

@@ -35,23 +35,27 @@
 </nav>
 
 	<div id="content" class="container">
-		<div class="row justify-content-center">
-			<div class="col-md-10">
-				<div id="postArea">
-					<h1 id="loginHeader" class="display-4 text-center mb-4">New Post</h1>
-					<form:form action="${pageContext.request.contextPath}/savePost"
+		<div class="card gedf-card mt-5 mb-5">
+		    <div class="card-header">
+		        <div class="d-flex justify-content-center align-items-center">
+		            <div class="d-flex justify-content-between align-items-center">
+		            	<h1>New Post</h1>
+		            </div>
+		        </div>
+		    </div>
+		    <div class="card-body">		        
+				<form:form action="${pageContext.request.contextPath}/savePost"
 								modelAttribute="newPost" method="POST" enctype="multipart/form-data">
-						<div class="form-group">
-							<form:textarea id="textArea" class="m-auto" cols="50" rows="10" path="content"/>
-						</div>
-						<div class="form-group">
-							<label for = "image" class="w-50 mx-auto text-center"><i class="far fa-image mr-2"></i>Upload picture</label>
-							<input type="file" id="image" name="uploadedImage">
-						</div>
-						<button type="submit" id="submitPost" class="btn btn-primary w-50 mx-auto">Submit<i class="fas fa-angle-double-right ml-2"></i></button>
-					</form:form>
-				</div>
-			</div>
+					<div class="form-group">
+						<form:textarea id="color" class="m-auto form-control" cols="50" rows="10" path="content"/>
+					</div>
+					<div class="form-group">
+						<label for = "image" class="w-50 mx-auto text-center"><i class="far fa-image mr-2"></i>Upload picture</label>
+						<input type="file" id="image" name="uploadedImage">
+					</div>
+					<button type="submit" id="submitPost" class="btn btn-primary w-50 mx-auto">Submit<i class="fas fa-angle-double-right ml-2"></i></button>
+				</form:form>
+		    </div>
 		</div>
 	</div>
 

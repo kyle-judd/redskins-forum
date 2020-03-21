@@ -87,4 +87,10 @@ public class UserServiceImpl implements UserService {
 		
 	}
 
+	@Override
+	@Transactional
+	public void saveOrUpdateUser(User user) {
+		userDao.save(user);		
+	}
+
 }

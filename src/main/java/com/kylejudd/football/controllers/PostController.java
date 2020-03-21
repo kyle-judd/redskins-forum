@@ -17,8 +17,8 @@ import org.springframework.web.multipart.MultipartFile;
 import com.kylejudd.football.entity.Post;
 import com.kylejudd.football.entity.PostImage;
 import com.kylejudd.football.entity.User;
+import com.kylejudd.football.service.CloudinaryService;
 import com.kylejudd.football.service.CloudinaryServiceImpl;
-import com.kylejudd.football.service.ImageService;
 import com.kylejudd.football.service.PostService;
 import com.kylejudd.football.service.UserService;
 
@@ -30,12 +30,9 @@ public class PostController {
 	
 	@Autowired
 	private UserService userService;
-	
+
 	@Autowired
-	private ImageService imageService;
-	
-	@Autowired
-	private CloudinaryServiceImpl cloudinaryService;
+	private CloudinaryService cloudinaryService;
 	
 	@GetMapping("/showPost")
 	public String showPost(Model theModel) {
@@ -74,9 +71,9 @@ public class PostController {
 		
 		PostImage postImage = new PostImage(path, fileName);
 		
-		cloudinaryService.saveToDatabase(postImage);
+		cloudinaryService.savePostImageToDatabase(postImage);
 		
-		PostImage postImageFromDatabase = cloudinaryService.getImageByFileName(fileName);
+		PostImage postImageFromDatabase = cloudinaryService.getPostImageByFileName(fileName);
 		
 		thePost.setPostImage(postImageFromDatabase);
 		

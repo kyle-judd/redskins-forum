@@ -92,6 +92,13 @@ body {
 	
 		font-family: "Montserrat";
 	}
+	
+	.custom-circle-image {
+	  width: 8vw; /* note i used vw not px for better responsive */
+	  height: 8vw;
+	  border-radius: 50%;
+	  object-fit: cover;
+	}
 }         
 
 /**Reset Bootstrap*/
@@ -131,8 +138,8 @@ a:hover {
 }
 
 .custom-circle-image {
-  width: 4vw; /* note i used vw not px for better responsive */
-  height: 4vw;
+  width: 8vw; /* note i used vw not px for better responsive */
+  height: 8vw;
   border-radius: 50%;
   object-fit: cover;
 }
