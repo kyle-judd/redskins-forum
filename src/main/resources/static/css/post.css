@@ -70,6 +70,12 @@ h1 {
 	margin-top: 150px;
 }
 
+@Media (max-width: 400px) {
+	#content {
+		margin-top: 100px;
+	}
+}
+
 input[type="file"]{
 	display: none;
 }
