@@ -13,22 +13,6 @@
   	<link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,400,700&display=swap" rel="stylesheet">
   	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/myProfile.css">
-	
-	<!-- Janky solution to profile picture -->
-	<style type="text/css">
-		.avatar {
-			border-radius: 50%;
-			height: 200px;
-			width: 200px;
-			background-image: url("<c:url value="profile/picture/${loggedInUser.profilePicture.filename}"/>");
-		}
-		
-		.cover {
-			background-size: cover;
-			background-position: center;	
-		}
-		
-	</style>
 	<title>My Profile</title>
 </head>
 <body>

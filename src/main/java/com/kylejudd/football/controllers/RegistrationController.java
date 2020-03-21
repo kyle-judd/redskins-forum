@@ -76,9 +76,10 @@ public class RegistrationController {
 			return "registration-form";
 		}
 		
-		if(image == null) {
-			user.setProfilePicture(cloudinaryService.getProfilePictureByFileName("71ed4d29fbad769786476d37b35c5441.jpg"));
+		if(image.isEmpty()) {
+			user.setProfilePicture(cloudinaryService.getProfilePictureByFileName("71ed4d29fbad769786476d37b35c5441_iac7ju.jpg"));
 		} else {
+			
 			Map uploadedProfilePicture = cloudinaryService.uploadPostImage(image);
 			
 			String path = (String) uploadedProfilePicture.get("url");
@@ -96,7 +97,6 @@ public class RegistrationController {
 			ProfilePicture profilePictureFromDatabase = cloudinaryService.getProfilePictureByFileName(fileName);
 			
 			user.setProfilePicture(profilePictureFromDatabase);
-			
 		}
 		
 		userService.save(user);
