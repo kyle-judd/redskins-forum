@@ -92,18 +92,9 @@
 							    <div class="card-header">
 							        <div class="d-flex justify-content-between align-items-center">
 							            <div class="d-flex justify-content-between align-items-center">
-							            	<c:choose>
-												<c:when test="${post.user.profilePicture != null}">
-													<div class="mr-2">
-														<img class="custom-circle-image" width="45" src="<c:url value="profile/picture/${post.user.profilePicture.filename}"/>" alt="Profile Picture">
-													</div>
-												</c:when>
-												<c:when test="${post.user.profilePicture == null}">
-													<div class="mr-2">
-														<img class="custom-circle-image" width="45" src="<c:url value="profile/picture/71ed4d29fbad769786476d37b35c5441.jpg"/>">
-													</div>
-												</c:when>
-											</c:choose>
+							            	<div class="mr-2">
+												<img class="custom-circle-image" width="45" src="${post.user.profilePicture.path}" alt="Profile Picture">
+											</div>
 							                <div class="ml-2">
 							                    <div id="username" class="h5 m-0">@${post.user.username}</div>
 							                    <div id="name" class="h7">${post.user.firstName} ${post.user.lastName}</div>
@@ -130,7 +121,7 @@
 							        </p>
 							        <c:if test = "${post.postImage != null}">
 							        	<div class="post-image">
-											<img class="img" src="<c:url value="posts/images/${post.postImage.fileName}"/>">
+											<img class="img" src="${post.postImage.path}">
 										</div>
 									</c:if>
 							    </div>
